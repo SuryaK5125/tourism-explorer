@@ -1,0 +1,11 @@
+{
+  // Separate Worker that holds the Geoapify key. Deploy from src/backend:
+  //   npx wrangler deploy -c wrangler.proxy.jsonc
+  //   npx wrangler secret put GEOAPIFY_API_KEY -c wrangler.proxy.jsonc
+  "name": "tourism-explorer-geoapify-proxy",
+  "main": "proxy/worker.js",
+  "compatibility_date": "2025-07-30",
+  "dev": {
+    "port": 8787
+  }
+}

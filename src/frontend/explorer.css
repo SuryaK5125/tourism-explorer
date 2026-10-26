@@ -1,0 +1,836 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* ---------- Design tokens ----------
+   One accent (teal), neutral surfaces, 4px spacing grid, two radii. */
+.te-root {
+  --bg: #ffffff;
+  --surface: #f4f5f6;
+  --border: #e3e6e9;
+  --text: #15181b;
+  --muted: #5f666e;
+  --subtle: #8b929a;
+  --accent: #0b7a6b;
+  --accent-weak: #e5f2ef;
+  --on-accent: #ffffff;
+  --radius: 10px;
+  --radius-sm: 6px;
+
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+  padding: 20px 20px 12px;
+  box-sizing: border-box;
+  min-height: 200px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.te-root.te-dark {
+  --bg: #141618;
+  --surface: #1d2023;
+  --border: #2c3035;
+  --text: #eceef0;
+  --muted: #a2a9b1;
+  --subtle: #7b838b;
+  --accent: #4dbfac;
+  --accent-weak: #1b302d;
+  --on-accent: #0c1513;
+}
+
+.te-root *,
+.te-root *::before,
+.te-root *::after {
+  box-sizing: border-box;
+}
+
+.te-compact {
+  padding: 14px 12px 10px;
+  font-size: 13px;
+}
+
+.te-root button {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------- Header ---------- */
+.te-header {
+  margin-bottom: 14px;
+  animation: te-fade 0.3s ease both;
+}
+
+.te-eyebrow {
+  margin: 0 0 2px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.te-header {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.te-subtitle strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.te-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.te-compact .te-title {
+  font-size: 20px;
+}
+
+.te-subtitle {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.te-subtitle span + span::before {
+  content: '·';
+  margin: 0 6px;
+  color: var(--subtle);
+}
+
+.te-compact .te-header {
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+/* ---------- Category chips ---------- */
+.te-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+/* Sidebar: same chips, slightly smaller, wrapping onto two neat lines (nothing clipped) */
+.te-compact .te-chips {
+  gap: 6px 5px;
+  margin-bottom: 12px;
+}
+
+.te-compact .te-chip {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12.5px;
+}
+
+.te-chip {
+  flex: none;
+  height: 30px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 12.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.te-chip:hover {
+  border-color: var(--subtle);
+}
+
+.te-chip.is-active {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.te-root .te-chip:focus-visible,
+.te-root button:focus-visible,
+.te-root a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Tabs (sidebar) ---------- */
+.te-tabs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.te-tab {
+  position: relative;
+  border: 0;
+  background: none;
+  padding: 8px 0 9px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted) !important;
+  cursor: pointer;
+}
+
+.te-tab.is-active {
+  color: var(--text) !important;
+}
+
+.te-tab.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.te-tab__count {
+  margin-left: 5px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.te-panel {
+  padding-top: 8px;
+  animation: te-fade 0.2s ease both;
+}
+
+/* ---------- Mainline layout ---------- */
+.te-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 24px;
+  align-items: start;
+}
+
+.te-aside {
+  position: sticky;
+  top: 12px;
+}
+
+.te-aside__plan {
+  margin-top: 16px;
+}
+
+.te-section-title {
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.te-list {
+  max-height: 640px;
+  overflow-y: auto;
+  margin: 0 -8px;
+  padding: 0 8px;
+  scrollbar-width: thin;
+}
+
+.te-compact .te-list {
+  max-height: 520px;
+}
+
+/* ---------- Place row ---------- */
+.te-row {
+  position: relative;
+  border-top: 1px solid var(--border);
+  animation: te-rise 0.35s ease both;
+  animation-delay: calc(min(var(--i), 8) * 30ms);
+}
+
+.te-row:first-child {
+  border-top: 0;
+}
+
+.te-row__main {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 40px 12px 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.te-row__main::before {
+  /* hover/active highlight that extends past the text column */
+  content: '';
+  position: absolute;
+  inset: 0 -8px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: -1;
+}
+
+.te-row { z-index: 0; }
+.te-row:hover .te-row__main::before,
+.te-row.is-active .te-row__main::before {
+  opacity: 1;
+}
+
+.te-thumb {
+  position: relative;
+  flex: none;
+  width: 88px;
+  height: 66px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+}
+
+.te-compact .te-thumb {
+  width: 60px;
+  height: 60px;
+}
+
+.te-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.te-thumb__icon {
+  color: var(--subtle);
+  font-size: 22px !important;
+}
+
+.te-thumb__num {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.te-row__text {
+  min-width: 0;
+  flex: 1;
+}
+
+.te-row__name {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.te-compact .te-row__name {
+  font-size: 14px;
+}
+
+.te-row__meta {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.te-row__blurb {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.te-compact .te-row__blurb {
+  -webkit-line-clamp: 1;
+}
+
+.te-row.is-open .te-row__blurb {
+  -webkit-line-clamp: unset;
+  color: var(--text);
+}
+
+/* Featured first result: larger photo in mainline */
+.te-root:not(.te-compact) .te-row--featured .te-thumb {
+  width: 120px;
+  height: 88px;
+}
+
+.te-root:not(.te-compact) .te-row--featured .te-row__name {
+  font-size: 17px;
+}
+
+/* Mainline top pick with a real photo: photo on top, larger title, 3-line intro */
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-row__main {
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 0 16px;
+}
+
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-thumb {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 230px;
+  border-radius: var(--radius);
+}
+
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-thumb__num {
+  top: 10px;
+  left: 10px;
+}
+
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-row__name {
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  padding-right: 44px;
+}
+
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-row__blurb {
+  -webkit-line-clamp: 3;
+  font-size: 13.5px;
+}
+
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-plan-toggle {
+  top: 14px;
+  right: 10px;
+  border-color: transparent;
+}
+
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-plan-toggle:not(.is-on) {
+  background: var(--bg);
+}
+
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-row__main {
+  padding-right: 0;
+}
+
+.te-root:not(.te-compact) .te-row--featured.has-photo .te-row__details {
+  padding-left: 0;
+}
+
+.te-row__details {
+  padding: 0 0 12px calc(88px + 12px);
+  animation: te-fade 0.2s ease both;
+}
+
+.te-compact .te-row__details {
+  padding-left: calc(60px + 12px);
+}
+
+.te-root:not(.te-compact) .te-row--featured .te-row__details {
+  padding-left: calc(120px + 12px);
+}
+
+.te-row__desc {
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.te-row__address {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.te-row__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.te-row__links a {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.te-row__links a:hover {
+  text-decoration: underline;
+}
+
+/* Add-to-plan toggle, top-right of each row */
+.te-plan-toggle {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  font-size: 18px !important;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.te-plan-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.te-plan-toggle.is-on {
+  background: var(--accent-weak);
+  border-color: transparent;
+  color: var(--accent);
+}
+
+/* ---------- Buttons ---------- */
+.te-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.te-btn--primary {
+  margin-top: 14px;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent) !important;
+}
+
+.te-icon-btn {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--subtle) !important;
+  font-size: 16px !important;
+  cursor: pointer;
+}
+
+.te-icon-btn:hover {
+  background: var(--surface);
+  color: var(--text) !important;
+}
+
+/* ---------- Map ---------- */
+.te-map {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  z-index: 0;
+  background: var(--surface);
+}
+
+.te-root .leaflet-container {
+  font-family: inherit;
+}
+
+.te-root .leaflet-control-zoom {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+.te-root .leaflet-control-zoom a {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+}
+
+.te-root .leaflet-control-attribution {
+  font-size: 9px;
+  background: color-mix(in srgb, var(--bg) 80%, transparent) !important;
+  color: var(--subtle);
+}
+
+.te-root .leaflet-control-attribution a {
+  color: var(--muted);
+}
+
+.te-root .leaflet-tooltip {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: none;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 8px;
+}
+
+.te-root .leaflet-tooltip-top::before {
+  border-top-color: var(--border);
+}
+
+.te-pin {
+  display: grid !important;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg);
+  border: 2px solid var(--bg);
+  font-size: 10.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.15s;
+}
+
+.te-pin--dot {
+  background: var(--muted);
+  border-width: 2px;
+  opacity: 0.85;
+}
+
+.te-pin.is-planned {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 11.5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.te-pin.is-active {
+  transform: scale(1.25);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.te-pin--center {
+  background: var(--bg);
+  border: 3px solid var(--text);
+}
+
+.te-route {
+  stroke: var(--accent);
+  stroke-opacity: 0.9;
+}
+
+/* ---------- Day plan ---------- */
+.te-plan {
+  margin-top: 10px;
+}
+
+.te-compact .te-plan {
+  margin-top: 12px;
+}
+
+.te-plan__summary {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.te-plan__empty {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.te-plan__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.te-plan__stop {
+  animation: te-rise 0.3s ease both;
+  animation-delay: calc(var(--i) * 40ms);
+}
+
+/* time | rail | text | remove */
+.te-plan__leg {
+  display: block;
+  margin-left: 69px;
+  padding: 4px 0 4px 14px;
+  border-left: 1px dashed var(--border);
+  font-size: 11.5px;
+  color: var(--subtle);
+}
+
+.te-plan__row {
+  display: grid;
+  grid-template-columns: 62px 14px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0;
+}
+
+.te-plan__row time {
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  padding-right: 6px;
+  white-space: nowrap;
+}
+
+.te-plan__dot {
+  justify-self: start;
+  width: 9px;
+  height: 9px;
+  margin-left: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.te-plan__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-left: 4px;
+}
+
+.te-plan__info strong {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.te-plan__info span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.te-plan__note {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  color: var(--subtle);
+}
+
+/* ---------- Status states ---------- */
+.te-status__line {
+  margin: 4px 0 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.te-skeleton {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+}
+
+.te-skeleton:first-of-type {
+  border-top: 0;
+}
+
+.te-skeleton__thumb,
+.te-skeleton__lines span {
+  display: block;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  animation: te-pulse 1.2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 100ms);
+}
+
+.te-skeleton__thumb {
+  flex: none;
+  width: 60px;
+  height: 60px;
+}
+
+.te-skeleton__lines {
+  flex: 1;
+  padding-top: 6px;
+}
+
+.te-skeleton__lines span {
+  height: 12px;
+  width: 60%;
+  margin-bottom: 8px;
+}
+
+.te-skeleton__lines span + span {
+  width: 85%;
+  height: 10px;
+}
+
+.te-status--message {
+  text-align: center;
+  padding: 32px 12px;
+  animation: te-fade 0.3s ease both;
+}
+
+.te-status__icon {
+  font-size: 28px !important;
+  color: var(--subtle);
+}
+
+.te-status--message h3 {
+  margin: 8px 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.te-status--message p {
+  margin: 0 auto;
+  max-width: 320px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.te-footer {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--subtle);
+}
+
+/* ---------- Motion ----------
+   Entrance motion never touches opacity: if the frame is throttled and animations
+   don't run, content must still be visible. */
+@keyframes te-rise {
+  from { transform: translateY(6px); }
+  to { transform: none; }
+}
+
+@keyframes te-fade {
+  from { transform: translateY(3px); }
+  to { transform: none; }
+}
+
+@keyframes te-pulse {
+  50% { opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .te-root * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "hd-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "wrangler dev",
+    "build": "node esbuild.config.js && cp wrangler.jsonc schema.jsonc ../../dist/backend/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hono": "^4.9.2",
+    "wrangler": "^4.31.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.9"
+  }
+}

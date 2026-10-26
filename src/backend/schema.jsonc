@@ -1,0 +1,5 @@
+[
+  // "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT NOT NULL, email TEXT UNIQUE);",
+  // "CREATE TABLE IF NOT EXISTS orders (id INTEGER PRIMARY KEY, user_id INTEGER, total REAL, created_at INTEGER, FOREIGN KEY (user_id) REFERENCES users(id));"
+]
+

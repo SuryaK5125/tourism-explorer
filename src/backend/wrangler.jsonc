@@ -1,0 +1,36 @@
+{
+  // Worker name
+  "name": "hd-backend",
+
+  // Entry point
+  "main": "index.js",
+
+  // Cloudflare Workers compatibility date
+  "compatibility_date": "2025-07-30",
+
+  "dev": {
+    // Custom port for wrangler dev
+    "port": 3001
+  },
+    "compatibility_flags": [
+    "nodejs_compat",
+    "enable_nodejs_http_server_modules"
+  ],
+  "vars": {
+    "DEV_DOMAIN": "",
+    "STAGING_DOMAIN":"",
+    "PROD_DOMAIN": "",      
+    "ENVIRONMENT": "development",
+    // URL of the deployed Geoapify proxy Worker (wrangler.proxy.jsonc). Not a secret.
+    // Locally the key in .dev.vars is used instead.
+    "GEOAPIFY_PROXY_URL": ""
+  }
+
+//   "d1_databases": [
+//     {
+//       "binding": "DB",               // This will be used in code as env.DB
+//       "database_name": "my-database", 
+//       "database_id": "test"
+//     }
+//   ]
+}

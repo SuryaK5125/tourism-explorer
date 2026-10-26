@@ -1,0 +1,38 @@
+[
+  {
+    "component": "tourism-explorer",
+    "query": "Tourist attractions in NYC",
+    "entities": [
+      {
+        "word": "NYC",
+        "collectionName": "CITIES",
+        "collectionType": "HD_LOCATION",
+        "entityInfo": {
+          "geo": {
+            "tz": "America/New_York",
+            "lat": 40.71427,
+            "city": "New York City",
+            "long": -74.00597,
+            "state": "New York",
+            "country": "United States",
+            "countryCode": "US"
+          }
+        },
+        "entityType": "LOCATION",
+        "description": "largest city in the United States",
+        "relevanceScore": 100
+      }
+    ],
+    "keyword": [{ "word": "tourist attractions", "description": "" }],
+    "genericQuery": "tourist attractions in HD_LOCATION__CITIES",
+    "userLocation": {
+      "position": {
+        "coords": { "latitude": 26.4631, "longitude": 80.3479 },
+        "city": "Kanpur",
+        "countryCode": "IN"
+      },
+      "source": "ip"
+    },
+    "suggestedPlace": "sidebar"
+  }
+]
