@@ -48,6 +48,6 @@ export default  {
 	info: {
 		// key-values added here will be added to the compInfo section of searchData
 	},
-	github: "",
-	demovideo: ""
+	github: "https://github.com/SuryaK5125/tourism-explorer",
+	demovideo: "https://youtu.be/6xPopYJye4w"
 }

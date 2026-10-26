@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "wrangler dev",
-    "build": "node esbuild.config.js && cp wrangler.jsonc schema.jsonc ../../dist/backend/"
+    "build": "node esbuild.config.js && node -e \"const fs=require('node:fs'); for(const f of ['wrangler.jsonc','schema.jsonc']) fs.copyFileSync(f,'../../dist/backend/'+f)\""
   },
   "keywords": [],
   "author": "",
